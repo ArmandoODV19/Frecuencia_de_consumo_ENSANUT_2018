@@ -136,7 +136,7 @@ state_nutri_plot <- function(x = ensanut_limpia, food,state){
 
 }
 
-state_nutri_plot(food = "frutas", state = "Chihuahua")
+state_nutri_plot(food = "frutas", state = "Aguascalientes")
 
 
 # graficar por alimento, entidad, sexo y area
@@ -505,7 +505,7 @@ zone_nutri_plot <- function(x = ensanut_limpia, food, zone){
 
 }
 
-zone_nutri_plot(food = "frutas", zone = "sur")
+zone_nutri_plot(food = "frutas", zone = "cdmx")
 
 
 ###
@@ -697,7 +697,7 @@ state_recommendable_food_plot <- function(estado){
   figure
 }
 
-state_recommendable_food_plot(estado = "Morelos")
+state_recommendable_food_plot(estado = "Chihuahua")
 
 
 # grafico de alimentos no recomendables por estado
