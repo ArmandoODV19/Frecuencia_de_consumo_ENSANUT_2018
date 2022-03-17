@@ -34,8 +34,9 @@ nutri_plot(food = "agua")
 # funcion para conocer porcentaje de consumo de alimentos dividido por estados
 # para esta funcion se debe conocer el total de población que conforma cada estado
 # posteriormente, se divide la frecuencia por el total de personas por estado
+# ESTA NO FUNCIONA, NO ESTÁ NORMALIZADA
 
-nutri_plot_all_states <- function(x = ensanut_limpia, food, x_name = "edad", y_name=""){
+#nutri_plot_all_states <- function(x = ensanut_limpia, food, x_name = "edad", y_name=""){
   ensanut_limpia %>%
     select(agua, edad_categorica, entidad) %>%
     filter(agua == 1) %>%
@@ -59,12 +60,12 @@ nutri_plot_all_states <- function(x = ensanut_limpia, food, x_name = "edad", y_n
     ylim(0,1)
 }
 
-nutri_plot_all_states(food = "agua")
+#nutri_plot_all_states(food = "agua")
 
 # para saber cuantas personas se encuestaron por estado
-ensanut_limpia %>%
-  select(agua,edad_categorica, entidad) %>%
-  filter(entidad == "Aguascalientes")
+#ensanut_limpia %>%
+#  select(agua,edad_categorica, entidad) %>%
+#  filter(entidad == "Aguascalientes")
 
 # funcion para obtner porcentaje de consumo de alimento y estado
 
