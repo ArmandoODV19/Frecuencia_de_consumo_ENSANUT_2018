@@ -1,5 +1,7 @@
 ### automatizando ensanut
 
+ensanut_limpia <- readRDS("clean_data/ensanut_limpia.rds")
+
 # funcion para conocer porcentaje de consumo de alimentos
 
 nutri_plot <- function(x = ensanut_limpia, food, x_name = "edad", y_name=""){
