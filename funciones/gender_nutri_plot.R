@@ -1,0 +1,128 @@
+gender_nutri_plot <- function(x = ensanut_limpia, food,state, domain){
+  pre_hombre <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "preescolares",
+           sexo == "hombre") %>%
+    summarise(total = sum(freq))
+
+  pre_hombre_total <- pre_hombre$total
+
+  pre_mujer <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "preescolares",
+           sexo == "mujer") %>%
+    summarise(total = sum(freq))
+
+  pre_mujer_total <- pre_mujer$total
+
+
+  esc_hombre <-x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "escolares",
+           sexo == "hombre") %>%
+    summarise(total = sum(freq))
+
+  esc_hombre_total <- esc_hombre$total
+
+  esc_mujer <-x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "escolares",
+           sexo == "mujer") %>%
+    summarise(total = sum(freq))
+
+  esc_mujer_total <- esc_mujer$total
+
+  ado_hombre <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "adolescentes",
+           sexo == "hombre") %>%
+    summarise(total = sum(freq))
+
+  ado_hombre_total <- ado_hombre$total
+
+  ado_mujer <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "adolescentes",
+           sexo == "mujer") %>%
+    summarise(total = sum(freq))
+
+  ado_mujer_total <- ado_mujer$total
+
+  adul_hombre <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "adultos",
+           sexo == "hombre") %>%
+    summarise(total = sum(freq))
+
+  adul_hombre_total <- adul_hombre$total
+
+  adul_mujer <- x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, sexo) %>%
+    count() %>%
+    filter(edad_categorica == "adultos",
+           sexo == "mujer") %>%
+    summarise(total = sum(freq))
+
+  adul_mujer_total <- adul_mujer$total
+
+  x %>%
+    select(food, edad_categorica, entidad, sexo, area) %>%
+    filter(x[,(colnames(x)%in%c(food))] == 1,
+           entidad == state,
+           area == domain) %>%
+    group_by(edad_categorica, entidad, sexo, area) %>%
+    count() %>%
+    mutate(porcentaje = case_when(edad_categorica == "adolescentes" & sexo == "hombre" ~ freq/ado_hombre_total,
+                                  edad_categorica == "adolescentes" & sexo == "mujer" ~ freq/ado_mujer_total,
+                                  edad_categorica == "adultos" & sexo == "hombre" ~ freq/adul_hombre_total,
+                                  edad_categorica == "adultos" & sexo == "mujer" ~ freq/adul_mujer_total,
+                                  edad_categorica == "escolares" & sexo == "hombre" ~ freq/esc_hombre_total,
+                                  edad_categorica == "escolares" & sexo == "mujer" ~ freq/esc_mujer_total,
+                                  edad_categorica == "preescolares" & sexo == "hombre" ~ freq/pre_hombre_total,
+                                  edad_categorica == "preescolares" & sexo == "mujer" ~ freq/pre_mujer_total),
+           edad_categorica = factor(edad_categorica, levels = c("preescolares",
+                                                                "escolares", "adolescentes",
+                                                                "adultos"))) %>%
+    ggplot(aes(x = edad_categorica, y = porcentaje, fill=edad_categorica))+
+    xlab("")+
+    ylab("")+
+    geom_col()+
+    theme_classic()+
+    theme(legend.position="none",
+          axis.text.x = element_text(size = 10, angle = 90, hjust = 1))+
+    ylim(0,1)+
+    facet_wrap(.~sexo)
+
+
+}
