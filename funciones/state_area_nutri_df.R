@@ -60,3 +60,5 @@ state_area_nutri_df <- function(x = ensanut_limpia, food, state, domain){
                                                                 "adultos")))
 
 }
+
+
