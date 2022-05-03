@@ -33,7 +33,7 @@ recommendable_food_plot()
 non_recommendable_food_plot()
 
 
-state_recommendable_food_plot(estado = "Chihuahua")
+state_recommendable_food_plot(estado = "Morelos")
 
 
 state_non_recommendable_food_plot("Morelos")
