@@ -22,3 +22,15 @@ zone_nutri_df(food = "frutas", zone = "cdmx")
 
 zone_gender_nutri_plot(food = "frutas", zone = "norte")
 zone_gender_nutri_df(food = "frutas", zone = "norte")
+
+
+recommendable_food_plot()
+
+
+non_recommendable_food_plot()
+
+
+state_recommendable_food_plot(estado = "Chihuahua")
+
+
+state_non_recommendable_food_plot("Morelos")
