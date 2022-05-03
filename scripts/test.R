@@ -1,5 +1,8 @@
-nutri_plot(food = "agua")
+# frutas, leguminosas, carnes, carnes_procesadas, antojitos
+# dulces, cereales, bebidas_no_lacteas, agua, bebidas_lacteas,
+# lacteos, huevo, verduras
 
+nutri_plot(food = "agua")
 nutri_df(food = "agua")
 
 
