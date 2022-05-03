@@ -12,3 +12,13 @@ filter_nutri_df(food = "frutas", state = "Chihuahua", sex = "hombre", domain = "
 
 state_area_nutri_plot(food = "frutas", state = "Morelos", domain = "rural")
 state_area_nutri_df(food = "frutas", state = "Morelos", domain = "rural")
+
+gender_nutri_plot(food = "frutas", state = "Morelos", domain = "rural")
+gender_nutri_df(food = "frutas", state = "Morelos", domain = "rural")
+
+
+zone_nutri_plot(food = "frutas", zone = "cdmx")
+zone_nutri_df(food = "frutas", zone = "cdmx")
+
+zone_gender_nutri_plot(food = "frutas", zone = "norte")
+zone_gender_nutri_df(food = "frutas", zone = "norte")
