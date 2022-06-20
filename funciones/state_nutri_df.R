@@ -5,7 +5,7 @@ state_nutri_df <- function(x = ensanut_limpia, food,state){
     group_by(edad_categorica, entidad) %>%
     count() %>%
     filter(edad_categorica == "preescolares") %>%
-    summarise(total = sum(freq))
+    summarise(total = sum(n))
 
   pre_total <- pre$total
 
@@ -16,7 +16,7 @@ state_nutri_df <- function(x = ensanut_limpia, food,state){
     group_by(edad_categorica, entidad) %>%
     count() %>%
     filter(edad_categorica == "escolares") %>%
-    summarise(total = sum(freq))
+    summarise(total = sum(n))
 
   esc_total <- esc$total
 
@@ -26,7 +26,7 @@ state_nutri_df <- function(x = ensanut_limpia, food,state){
     group_by(edad_categorica, entidad) %>%
     count() %>%
     filter(edad_categorica == "adolescentes") %>%
-    summarise(total = sum(freq))
+    summarise(total = sum(n))
 
   ado_total <- ado$total
 
@@ -36,7 +36,7 @@ state_nutri_df <- function(x = ensanut_limpia, food,state){
     group_by(edad_categorica, entidad) %>%
     count() %>%
     filter(edad_categorica == "adultos") %>%
-    summarise(total = sum(freq))
+    summarise(total = sum(n))
 
   adul_total <- adul$total
 
@@ -46,10 +46,10 @@ state_nutri_df <- function(x = ensanut_limpia, food,state){
            entidad == state) %>%
     group_by(edad_categorica, entidad) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "adolescentes" ~ freq/ado_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total,
-                                  edad_categorica == "escolares" ~ freq/esc_total,
-                                  edad_categorica == "preescolares" ~ freq/pre_total),
+    mutate(porcentaje = case_when(edad_categorica == "adolescentes" ~ n/ado_total,
+                                  edad_categorica == "adultos" ~ n/adul_total,
+                                  edad_categorica == "escolares" ~ n/esc_total,
+                                  edad_categorica == "preescolares" ~ n/pre_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adolescentes",
                                                                 "adultos")))
