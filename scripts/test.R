@@ -2,8 +2,8 @@
 # dulces, cereales, bebidas_no_lacteas, agua, bebidas_lacteas,
 # lacteos, huevo, verduras
 
-nutri_plot(food = "agua")
-nutri_df(food = "agua")
+nutri_plot(food = "leguminosas")
+nutri_df(food = "leguminosas")
 
 
 state_nutri_plot(food = "frutas", state = "Aguascalientes")
