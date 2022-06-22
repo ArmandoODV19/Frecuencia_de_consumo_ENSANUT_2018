@@ -10,7 +10,7 @@ recommendable_food_plot <- function(){
   figure <- ggarrange(a, b, c, d, e, f, g,
                       labels = c("Agua", "lácteos", "Frutas", "Leguminosas",
                                  "Carnes", "Huevo", "Verduras"),
-                      ncol = 7, nrow = 1,
+                      ncol = 4, nrow = 2,
                       font.label = list(size = 10), hjust = -0.5, vjust = 1)
   figure
 }
